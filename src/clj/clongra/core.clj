@@ -1,6 +1,4 @@
-(ns clongra.core)
+;; Copyright (c) Konrad Grzanek. All rights reserved.
+;; Created 2015-11-12
 
-(defn foo
-  "I don't do a whole lot."
-  [x]
-  (println x "Hello, World!"))
+(ns clongra.core)

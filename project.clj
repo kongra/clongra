@@ -8,10 +8,13 @@
                  [criterium                        "0.4.3"]
                  [org.apache.commons/commons-lang3 "3.4"  ]]
 
+  :main          clongra.core
+  :aot           :all
+
   :hooks         []
   :disable-deps-clean true
 
-  :plugins        [[cider/cider-nrepl                "0.9.1"]]
+  :plugins       [[cider/cider-nrepl                "0.9.1"]]
 
   :source-paths   ["src/clj"]
 
