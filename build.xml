@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="jclongra" default="jar" basedir=".">
+
+  <target name="init">
+    <property name="java.options" value="-O -encoding UTF-8"/>
+
+    <property name="local.classpath" value=""/>
+
+    <property name="module.dir"        value="jclongra"/>
+    <property name="name"              value="jclongra"/>
+    <property name="java-src.dir"      value="src/java"/>
+    <property name="resources.dir"     value="src/resources"/>
+    <property name="lib.dir"           value="lib/"/>
+    <property name="build.dir"         value="classes/"/>
+    <property name="build.compiler"    value="modern"/>
+
+    <path id="master-classpath">
+      <fileset dir="${lib.dir}">
+        <include name="*.jar"/>
+      </fileset>
+      <pathelement path="${build.dir}"/>
+    </path>
+
+  </target>
+
+  <target name="clean-all" depends="init">
+    <delete dir="${build.dir}" />
+    <delete file="${lib.dir}/${name}.jar" />
+  </target>
+
+  <target name="clean" depends="init">
+    <delete dir="${build.dir}/kongra"/>
+    <delete dir="${build.dir}/test"/>
+    <delete file="${lib.dir}/${name}.jar" />
+  </target>
+
+  <target name="prepare" depends="init">
+    <mkdir dir="${build.dir}" />
+    <buildnumber file="build.number"/>
+    <echo>build.number=${build.number}</echo>
+  </target>
+
+  <target name="compile-java" depends="prepare"
+	  description="Compile Java sources.">
+    <javac srcdir="${java-src.dir}"
+           destdir="${build.dir}"
+           includes="**"
+           includeantruntime="false"
+           debug="on">
+      <classpath refid="master-classpath"/>
+    </javac>
+    <copy todir="${build.dir}"  >
+      <fileset dir="${resources.dir}" includes="**" />
+    </copy>
+  </target>
+
+  <target name="jar" depends="compile-java">
+    <jar jarfile="${lib.dir}/${name}.jar"
+	 basedir="${build.dir}">
+    </jar>
+  </target>
+
+
+</project>
