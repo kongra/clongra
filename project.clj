@@ -4,9 +4,19 @@
   :license {:name   "Eclipse Public License"
             :url    "http://www.eclipse.org/legal/epl-v10.html"}
 
-  :dependencies [[org.clojure/clojure              "1.7.0"]
-                 [criterium                        "0.4.3"]
-                 [org.apache.commons/commons-lang3 "3.4"  ]]
+  :dependencies [[org.clojure/clojure                 "1.7.0"]
+                 [org.clojure/math.combinatorics      "0.1.1"]
+                 [org.clojure/math.numeric-tower      "0.0.4"]
+                 [org.apache.commons/commons-lang3    "3.4"  ]
+                 [org.apache.logging.log4j/log4j-core "2.4.1"]
+                 [joda-time/joda-time                 "2.9.1"]
+
+                 ;; FOR DEV. PURPOSES ONLY
+                 ;; [criterium "0.4.3"]
+                 ]
+
+  ;; FOR DEV. PURPOSES ONLY
+  ;; :plugins       [[cider/cider-nrepl "0.9.1"]]
 
   :main          clongra.core
   :aot           :all
@@ -14,45 +24,9 @@
   :hooks         []
   :disable-deps-clean true
 
-  :plugins       [[cider/cider-nrepl                "0.9.1"]]
-
   :source-paths   ["src/clj"]
 
-  :resource-paths ["lib/jclongra.jar"]
+  :resource-paths ["lib/jclongra.jar" "lib/flextao-inflector.jar"]
 
   :global-vars    {*warn-on-reflection* true
-                   *print-length*       500}
-
-  :jvm-opts       ["-server"
-
-                   "-d64"
-
-                   "-Xshare:off"
-                   "-XX:+AggressiveOpts"
-                   "-XX:+DoEscapeAnalysis"
-                   "-XX:+UseCompressedOops"
-                   ;; "-XX:+UseNUMA" ;; to check: numactl --hardware
-
-                   ;; HEAP SETTINGS
-                   "-Xms256m"
-                   "-Xmx256m"
-
-                   ;; PARALLEL GC SETTINGS
-                   "-XX:+UseParallelGC"
-                   "-XX:+UseParallelOldGC"
-                   "-XX:NewSize=100m"
-                   "-XX:MaxNewSize=100m"
-                   "-XX:-UseAdaptiveSizePolicy"
-                   "-XX:SurvivorRatio=6"
-
-                   ;; GC DEBUG
-                   ;; "-verbose:gc"
-                   "-XX:+PrintGCDetails"
-                   "-XX:+PrintGCTimeStamps"
-                   ;; "-Xloggc:gc.log"
-                   ;; "-XX:+PrintTenuringDistribution"
-
-                   ;; JCONSOLE DEBUG
-                   ;; "-Xdebug"
-                   ;; "-Xrunjdwp:transport=dt_socket,address=8021,server=y,suspend=n"
-                   ])
+                   *print-length*       500})
