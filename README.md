@@ -1,10 +1,10 @@
 # clongra
 
-A Clojure library designed to ... well, that part is up to you.
+A Clojure library that holds my general-purpose stuff.
 
 ## Usage
 
-FIXME
+(use 'clongra.core)
 
 ## License
 
