@@ -12,6 +12,7 @@
     <property name="java-src.dir"      value="src/java"/>
     <property name="resources.dir"     value="src/resources"/>
     <property name="lib.dir"           value="lib/"/>
+    <property name="clojure.jar"       value="/home/kongra/Devel/Libs/clojure-1.7.0/clojure-1.7.0.jar"/>
     <property name="build.dir"         value="classes/"/>
     <property name="build.compiler"    value="modern"/>
 
@@ -20,6 +21,7 @@
         <include name="*.jar"/>
       </fileset>
       <pathelement path="${build.dir}"/>
+      <pathelement path="${clojure.jar}"/>
     </path>
 
   </target>
@@ -30,7 +32,7 @@
   </target>
 
   <target name="clean" depends="init">
-    <delete dir="${build.dir}/kongra"/>
+    <delete dir="${build.dir}/jclongra"/>
     <delete dir="${build.dir}/test"/>
     <delete file="${lib.dir}/${name}.jar" />
   </target>
