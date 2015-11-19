@@ -151,7 +151,7 @@
   "Executes the body inside the synchronization block set on the
   monitor."
   [monitor & body]
-  `(clongra.core.Synchronized/invoke ~monitor (fn [] ~@body)))
+  `(jclongra.core.Synchronized/invoke ~monitor (fn [] ~@body)))
 
 
 ;; FILESYSTEM
