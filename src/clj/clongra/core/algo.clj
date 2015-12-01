@@ -14,6 +14,18 @@
   [x & fs] (map (fn [f] (f x)) fs))
 
 
+(defn mark-last
+  "Takes a sequence (e0 e1 ... en) and returns (false false ... true)
+  or (false false ...) if the argument is infinite. Lazy."
+  [coll]
+  (if-not (seq coll)
+    '()
+    (let [[_ & xs] coll]
+      (if-not (seq xs)
+        '(true)
+        (cons false (lazy-seq (mark-last xs)))))))
+
+
 (defn dissoc-nils
   "Dissociates any keys for which m is nil."
   [m]

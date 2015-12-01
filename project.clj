@@ -12,11 +12,11 @@
                  [joda-time/joda-time                 "2.9.1"]
 
                  ;; FOR DEV. PURPOSES ONLY
-                 ;; [criterium "0.4.3"]
+                 [criterium "0.4.3"]
                  ]
 
   ;; FOR DEV. PURPOSES ONLY
-  ;; :plugins       [[cider/cider-nrepl "0.9.1"]]
+  :plugins       [[cider/cider-nrepl "0.9.1"]]
 
   :main          clongra.core
   :aot           :all

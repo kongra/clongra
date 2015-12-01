@@ -36,3 +36,4 @@
 (load "core/resource")
 (load "core/inflector")
 (load "core/concur")
+(load "core/treeprint")
