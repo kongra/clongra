@@ -3,6 +3,8 @@
 
 (in-ns 'clongra.core)
 
+;; TREE-PRINTING
+
 (def ^:private PRINT-TREE-INDENT       "│   ")
 (def ^:private PRINT-TREE-EMPTYINDENT  "    ")
 (def ^:private PRINT-TREE-FORCHILD     "├── ")
@@ -58,3 +60,41 @@
   ([node adjacent show depth]
    (let [depth (if (< depth 1) 1 depth)]
      (print-tree-impl node adjacent show depth 0 '(true) true))))
+
+
+;; GRAPH TREE-PRINTING
+
+(deftype ^:private PrintGraphEllipsis [v])
+
+(def ^{:dynamic true :private true} *print-graph-visited* (atom #{}))
+
+(defn ^:private print-graph-show
+  [show v]
+  (if (instance? PrintGraphEllipsis v)
+    (str (show (.v ^PrintGraphEllipsis v)) " ...")
+
+    (do
+      (swap! *print-graph-visited* conj v)
+      (show v))))
+
+
+(defn ^:private print-graph-adjacent
+  [adjacent v]
+  (when-not (instance? PrintGraphEllipsis v)
+    (->> (adjacent v)
+         (map #(if (@*print-graph-visited* %) (PrintGraphEllipsis. %) %)))))
+
+
+(defn print-graph
+  ([v adjacent show depth]
+   (binding [*print-graph-visited* (atom #{})]
+     (print-tree v
+                 (partial print-graph-adjacent adjacent)
+                 (partial print-graph-show     show)
+                 depth)))
+
+  ([v adjacent show]
+   (print-graph v adjacent show Long/MAX_VALUE))
+
+  ([v adjacent]
+   (print-graph v adjacent str)))
