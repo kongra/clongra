@@ -14,8 +14,11 @@
 (defmacro obreak  [] `OBREAK )
 (defmacro oreturn [] `ORETURN)
 
-(defmacro obreak?  [x] `(identical? ~x OBREAK))
-(defmacro oreturn? [x] `(identical? ~x ORETURN))
+(defmacro obreak?  [x] `(ref= ~x ^Object OBREAK))
+(defmacro oreturn? [x] `(ref= ~x ^Object ORETURN))
+
+;; (defmacro obreak?  [x] `(identical? ~x OBREAK))
+;; (defmacro oreturn? [x] `(identical? ~x ORETURN))
 
 (defmacro odo
   ([]     nil)
