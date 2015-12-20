@@ -2,14 +2,13 @@
 ;; Created 2015-12-19
 
 (ns clongra.locrefs
-  (:refer-clojure :exclude [boolean byte short char int long
-                            float double reset!])
-  (:require [clojure.walk :as cwalk])
+  (:refer-clojure :exclude [boolean byte   short char int long
+                            float   double reset!])
   (:gen-class))
 
 ;; FAST MUTABLE, THREAD-UNSAFE (LOCAL) REFS FOR JAVA PRIMITIVE TYPES.
 ;; NO IDENTITY SEMANTICS.
-;; (:requite [clongra.locrefs :as lr])
+;; (:require [clongra.locrefs :as lr])
 
 ;; CONSTRUCTORS
 

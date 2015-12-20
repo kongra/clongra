@@ -37,3 +37,4 @@
 (load "core/inflector")
 (load "core/concur")
 (load "core/treeprint")
+(load "core/odo")
