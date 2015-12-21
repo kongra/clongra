@@ -2,7 +2,7 @@
 ;; Created 2015-12-20
 
 (ns clongra.oloops
-  (:refer-clojure :exclude [dotimes])
+  (:refer-clojure :exclude [dotimes for])
   (:use [clongra.core])
   (:gen-class))
 
@@ -37,7 +37,20 @@
 
 
 (defmacro doarray
+  "Iterates over an array using index i and iterating value v."
   [[i v array] & body]
   `(dotimes [~i (alength ~array)]
      (let [~v (aget ~array ~i)]
        ~@body)))
+
+
+(defmacro for
+  "A loop in a way similar to the ordinary for loop in C/C++/Java."
+  [[i init pred step] & body]
+  (let [v (gensym "v")]
+    `(loop [~i ~init]
+       (when ~pred
+         (let [~v (odo ~@body)]
+           (cond (obreak?  ~v) nil
+                 (oreturn? ~v) ~v
+                 :else (recur ~step)))))))

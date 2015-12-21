@@ -29,4 +29,6 @@
   :resource-paths ["lib/jclongra.jar" "lib/flextao-inflector.jar"]
 
   :global-vars    {*warn-on-reflection* true
-                   *print-length*       500})
+                   *print-length*       500}
+
+  :jvm-opts       ^:replace ["-server"])
