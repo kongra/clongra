@@ -10,3 +10,4 @@ lib/jclongra.jar
 .hgignore
 .hg/
 /bin
+build.number
