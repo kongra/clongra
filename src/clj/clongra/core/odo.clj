@@ -8,14 +8,14 @@
 (deftype ^:private OBreak  [])
 (deftype ^:private OReturn [])
 
-(def OBREAK  (OBreak. ))
-(def ORETURN (OReturn.))
+(def ^Object OBREAK  (OBreak. ))
+(def ^Object ORETURN (OReturn.))
 
 (defmacro obreak  [] `OBREAK )
 (defmacro oreturn [] `ORETURN)
 
-(defmacro obreak?  [x] `(ref= ~x ^Object OBREAK))
-(defmacro oreturn? [x] `(ref= ~x ^Object ORETURN))
+(defmacro obreak?  [x] `(ref= ~x OBREAK))
+(defmacro oreturn? [x] `(ref= ~x ORETURN))
 
 ;; (defmacro obreak?  [x] `(identical? ~x OBREAK))
 ;; (defmacro oreturn? [x] `(identical? ~x ORETURN))
