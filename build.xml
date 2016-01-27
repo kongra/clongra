@@ -12,7 +12,7 @@
     <property name="java-src.dir"      value="src/java"/>
     <property name="resources.dir"     value="src/resources"/>
     <property name="lib.dir"           value="lib/"/>
-    <property name="clojure.jar"       value="/home/kongra/Devel/Libs/clojure-1.7.0/clojure-1.7.0.jar"/>
+    <property name="clojure.jar"       value="/home/kongra/Devel/Libs/clojure-1.8.0/clojure-1.8.0.jar"/>
     <property name="build.dir"         value="classes/"/>
     <property name="build.compiler"    value="modern"/>
 
