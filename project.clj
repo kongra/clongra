@@ -12,12 +12,14 @@
                  [org.apache.logging.log4j/log4j-core "2.4.1"]
                  [joda-time/joda-time                 "2.9.1"]
 
+                 [org.clojure/tools.nrepl             "0.2.12"]
+
                  ;; FOR DEV. PURPOSES ONLY
                  [criterium "0.4.3"]
                  ]
 
   ;; FOR DEV. PURPOSES ONLY
-  :plugins       [[cider/cider-nrepl "0.9.1"]]
+  :plugins       [[cider/cider-nrepl "0.11.0"]]
 
   :main          clongra.core
   :aot           :all
