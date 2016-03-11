@@ -60,6 +60,12 @@
   (jclongra.locrefs.LRdouble. (clojure.core/double x)))
 
 
+(defn obj
+  {:inline (fn [x] `(jclongra.locrefs.LRobject. ~x))}
+  [x]
+  (jclongra.locrefs.LRobject. x))
+
+
 ;; ACCESSORS
 
 (defmacro value  [lr]       `(.value ~lr))
