@@ -26,6 +26,13 @@
         (cons false (lazy-seq (mark-last xs)))))))
 
 
+(defn assoc-conj ;:- coll v -> {k, coll v} -> k -> v -> {k, coll v}
+  "Adds v to a collection that is a value for k in m. Uses empty-coll
+  when no collection for k in m."
+  [m k v empty-coll]
+  (assoc m k (conj (get m k empty-coll) v)))
+
+
 (defn dissoc-nils
   "Dissociates any keys for which m is nil."
   [m]
