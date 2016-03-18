@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6d9a33ec-c987-46fc-83f1-4ee339dc9296" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build.number" afterPath="$PROJECT_DIR$/build.number" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/clj/clongra/core/utils.clj" afterPath="$PROJECT_DIR$/src/clj/clongra/core/utils.clj" />
-    </list>
+    <list default="true" id="6d9a33ec-c987-46fc-83f1-4ee339dc9296" name="Default" comment="" />
     <ignored path="clongra.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/classes/" />

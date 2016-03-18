@@ -3,6 +3,7 @@
 
 (ns clongra.core
     (:require [clojure.string             :as cstr ]
+              [clojure.set                :as cset ]
               [clojure.walk               :as cwalk]
               [clojure.math.combinatorics :as combo]
               [clojure.math.numeric-tower :as cmath])

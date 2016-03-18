@@ -834,3 +834,41 @@
 
 (set-var-proxy! jclongra.core.Proxies/tseq tseq)
 (set-var-proxy! jclongra.core.Proxies/tstr tstr)
+
+
+;; SOME REFLECTION ON THE COLLECTION TYPES
+
+(def ^:private COLLREFLECTS
+  [["java.util.List" #(instance? java.util.List %)]
+   ["java.util.Map"  #(instance? java.util.Map  %)]
+   ["java.util.Set"  #(instance? java.util.Set  %)]
+
+   ["seq? (clojure.lang.ISeq)"                   seq?]
+   ["lazy? (clojure.lang.LazySeq)"               lazy?]
+
+   ["sequential? (clojure.lang.Sequential)"      sequential?]
+   ["clojure.lang.Seqable" #(instance? clojure.lang.Seqable %)]
+   ["counted? (clojure.lang.Counted)"            counted?]
+   ["clojure.lang.Indexed" #(instance? clojure.lang.Indexed %)]
+   ["associative? (clojure.lang.Associative)"    associative?]
+   ["clojure.lang.ILookup" #(instance? clojure.lang.ILookup %)]
+   ["sorted? (clojure.lang.Sorted)"              sorted?]
+   ["reversible? (clojure.lang.Reversible)"      reversible?]
+
+   ["coll? (clojure.lang.IPersistentCollection)" coll?]
+   ["list? (clojure.lang.IPersistentList)"       list?]
+   ["vector? (clojure.lang.IPersistentVector)"   vector?]
+   ["map? (clojure.lang.IPersistentMap)"         map?]
+   ["set? (clojure.lang.IPersistentSet)"         set?]
+
+   ["clojure.lang.ASeq"    #(instance? clojure.lang.ASeq %)]])
+
+
+(defn collreflects
+  ([coll] ;:- coll -> [String]
+   (->> COLLREFLECTS
+        (filter (fn [[_ pred]] (pred coll)))
+        (map first)))
+
+  ([coll & colls] ;:- coll -> ... -> #{String}
+   (apply cset/intersection (map #(set (collreflects %)) (cons coll colls)))))
