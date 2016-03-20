@@ -12,6 +12,7 @@
 
 (load "core/constants")
 (load "core/keywords")
+(load "core/primitives")
 (load "core/str")
 (load "core/datetime")
 (load "core/exceptions")

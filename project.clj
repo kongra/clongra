@@ -19,7 +19,9 @@
                  ]
 
   ;; FOR DEV. PURPOSES ONLY
-  :plugins       [[cider/cider-nrepl "0.11.0"]]
+  :plugins       [[cider/cider-nrepl  "0.11.0"]
+                  ;; [lein-nodisassemble "0.1.3" ]
+                  ]
 
   :main          clongra.core
   :aot           :all

@@ -11,9 +11,6 @@
 
 (defmacro ref= [x y] `(jclongra.core.Ident/refeq ~x ~y))
 
-(defmacro boolean-not [b] `(jclongra.core.Booleans/not ~b))
-
-
 (defn MapEntry-to
   ([f ^java.util.Map$Entry entry]
      (f (.getKey entry) (.getValue entry)))
