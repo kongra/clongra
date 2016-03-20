@@ -15,3 +15,9 @@
   {:inline (fn [size] `(jclongra.core.Primitives/makeDoubles ~size))}
   [^long size]
   (jclongra.core.Primitives/makeDoubles size))
+
+
+(defn make-objects ;:- long -> Object[]
+  {:inline (fn [size] `(jclongra.core.Primitives/makeObjects ~size))}
+  [^long size]
+  (jclongra.core.Primitives/makeObjects size))

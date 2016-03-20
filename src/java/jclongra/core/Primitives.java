@@ -20,4 +20,10 @@ public final class Primitives {
     return new double[RT.intCast(size)];
   }
 
+  public static Object[] makeObjects(long size) { return new Object[RT.intCast(size)]; }
+
+  private Primitives() {
+
+  }
+
 }
