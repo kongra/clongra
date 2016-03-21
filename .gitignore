@@ -11,3 +11,4 @@ lib/jclongra.jar
 .hg/
 /bin
 build.number
+/.idea
