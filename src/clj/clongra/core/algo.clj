@@ -353,6 +353,17 @@
                     coll)))
 
 
+;; SUBMAPS (BASED ON POWERSET OF KEYS)
+
+(defn submaps ;:- {} -> ({})
+  "Returns all submaps of m, including m (first) and {} (last)."
+  [m]
+  (when (boolean-not (map? m))
+    (throw (IllegalArgumentException. "m|(map? m) required")))
+
+  (->> m keys powerset (map #(apply dissoc m %))))
+
+
 ;; CARTESIAN PRODUCT
 
 (defn nth-in-cartesian-product
