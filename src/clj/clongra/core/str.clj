@@ -101,9 +101,9 @@
 (defn ^String indent-string
   "Generates an indentation string of n indent-with elements
   (space character by default)."
-  ([n] (indent-string n \space))
+  ([^long n] (indent-string n \space))
 
-  ([n indent-with]
+  ([^long n indent-with]
      (let [sb (new StringBuilder)]
        (dotimes [i n] (. sb (append indent-with)))
        (str sb))))
