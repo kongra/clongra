@@ -277,3 +277,10 @@
   for the given color."
   [color s]
   (tstr (termcolor-marker color) s (termcolor-marker 'RESET)))
+
+
+;; PRINTING INTO System/out
+
+(defmacro with-out-systemout
+  [& body]
+  `(binding [*out* (java.io.PrintWriter. System/out)] ~@body))

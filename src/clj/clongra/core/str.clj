@@ -116,7 +116,7 @@
 	c (int (count s))
 	diff (int (clojure.core/- len c))]
 
-    (if (> diff (int 0)) (str (indent-string diff) s) s)))
+    (if (> diff 0) (str (indent-string diff) s) s)))
 
 
 (defn ^String unescape-unicode
