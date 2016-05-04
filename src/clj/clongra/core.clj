@@ -40,3 +40,4 @@
 (load "core/concur")
 (load "core/treeprint")
 (load "core/odo")
+(load "core/logic")
