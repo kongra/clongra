@@ -36,4 +36,5 @@
   :global-vars    {*warn-on-reflection* true
                    *print-length*       500}
 
-  :jvm-opts       ^:replace ["-server"])
+  :jvm-opts       ^:replace ["-server"
+                             "-Dclojure.compiler.direct-linking=true"])
