@@ -58,17 +58,21 @@
          level msg)))
 
 
+;; (defn- ^String log-message
+;;   [level msgs]
+;;   (let [now (.toString (joda) "Y-MM-d H:mm:ss,SSS")
+;;         ^StackTraceElement frame (current-stack-frame 3)
+;;         file (.getFileName frame)
+;;         line (.getLineNumber frame)
+;;         th (.. Thread currentThread getName)]
+
+;;     (str now
+;;          (when level (str " " level))
+;;          " [" th "] " file ":" line " " (apply tstr-spaced msgs))))
+
 (defn- ^String log-message
   [level msgs]
-  (let [now (.toString (joda) "Y-MM-d H:mm:ss,SSS")
-        ^StackTraceElement frame (current-stack-frame 3)
-        file (.getFileName frame)
-        line (.getLineNumber frame)
-        th (.. Thread currentThread getName)]
-
-    (str now
-         (when level (str " " level))
-         " [" th "] " file ":" line " " (apply tstr-spaced msgs))))
+  (str (when level (str level " ")) (apply tstr-spaced msgs)))
 
 
 ;; LOGGING LEVELS

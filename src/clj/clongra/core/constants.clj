@@ -9,3 +9,5 @@
        :tag java.lang.String}
 
   ENCODING "UTF-8")
+
+(def ... '...)
