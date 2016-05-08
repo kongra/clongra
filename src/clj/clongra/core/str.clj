@@ -110,12 +110,9 @@
 
 
 (defn ^String force-minimal-string-length
-  [len s]
-  (let [len (int len)
-	s (str s)
-	c (int (count s))
-	diff (int (clojure.core/- len c))]
-
+  [^long n s]
+  (let [s    (str s)
+	diff (- n (.length s))]
     (if (> diff 0) (str (indent-string diff) s) s)))
 
 
@@ -316,6 +313,21 @@
   ([prefix start]
      (let [prefix (tstr prefix)]
        (map #(symbol (str prefix %)) (N' start)))))
+
+
+;; PRINTING PROPERTIES AND VALUES
+
+(defn print-properties
+  ([^String prefix propvalues] ;:- String -> ((Object, Object)) -> nil
+   (let [prefix (.toString prefix)
+         n (apply max (map #(.length (str (first %))) propvalues))]
+     (doseq [[p v] propvalues]
+       (println (str prefix (force-minimal-string-length n (str p)))
+                ":"
+                (str v)))))
+
+  ([propvalues] ;:- ((Object, Object)) -> nil
+   (print-properties "" propvalues)))
 
 
 ;; ;; CONFIGURE REPL PRINTING TO USE tstr

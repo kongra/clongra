@@ -15,13 +15,11 @@
                  [org.clojure/tools.nrepl             "0.2.12"]
 
                  ;; FOR DEV. PURPOSES ONLY
-                 [criterium "0.4.3"]
-                 ]
+                 [criterium "0.4.3"]]
 
   ;; FOR DEV. PURPOSES ONLY
-  :plugins       [[cider/cider-nrepl  "0.11.0"]
-                  ;; [lein-nodisassemble "0.1.3" ]
-                  ]
+  :plugins       [[cider/cider-nrepl  "0.12.0"]
+                  [lein-nodisassemble "0.1.3" ]]
 
   :main          clongra.core
   :aot           :all
