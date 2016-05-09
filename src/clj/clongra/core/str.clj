@@ -104,16 +104,24 @@
   ([^long n] (indent-string n \space))
 
   ([^long n indent-with]
-     (let [sb (new StringBuilder)]
+     (let [indent-with (str indent-with)
+           sb (StringBuilder. (unchecked-multiply-int (int n) (.length indent-with)))]
        (dotimes [i n] (. sb (append indent-with)))
-       (str sb))))
+       (.toString sb))))
 
 
-(defn ^String force-minimal-string-length
+(defn ^String prefix-to-length
   [^long n s]
   (let [s    (str s)
 	diff (- n (.length s))]
     (if (> diff 0) (str (indent-string diff) s) s)))
+
+
+(defn ^String postfix-to-length
+  [^long n s]
+  (let [s    (str s)
+	diff (- n (.length s))]
+    (if (> diff 0) (str s (indent-string diff)) s)))
 
 
 (defn ^String unescape-unicode
@@ -322,7 +330,7 @@
    (let [prefix (.toString prefix)
          n (apply max (map #(.length (str (first %))) propvalues))]
      (doseq [[p v] propvalues]
-       (println (str prefix (force-minimal-string-length n (str p)))
+       (println (str prefix (postfix-to-length n (str p)))
                 ":"
                 (str v)))))
 
