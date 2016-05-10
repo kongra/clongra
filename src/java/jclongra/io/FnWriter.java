@@ -19,6 +19,9 @@ public class FnWriter extends Writer {
 
   @Override
   public void write(char[] cbuf, int off, int len) throws IOException {
+    if(len > 1 && cbuf[off + len - 1] == '\n') { // Strip-off an excessive newline
+      len--;
+    }
     f.invoke(String.valueOf(cbuf, off, len));
   }
 
