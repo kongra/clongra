@@ -122,14 +122,11 @@
                  (log-message "TRACE" more))))
 
 
-;; PRINTLN
+;; *out* WITH LOGGER FUNCTIONS
 
-(defn log-println!
-  [& more]
-  (when (logged?)
-    ;; When printing we abandon the STM transactional considerations
-    ;; and do not use logger-agent.
-    (println (log-message nil more))))
+(defmacro with-out-log
+  [log-fn & body]
+  `(binding [*out* (java.io.PrintWriter. (jclongra.io.FnWriter. ~log-fn))] ~@body))
 
 
 ;; LOG ON FOR CORE
